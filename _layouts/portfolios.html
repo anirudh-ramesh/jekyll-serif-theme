@@ -1,0 +1,62 @@
+---
+layout: default
+bodyClass: "page-portfolios"
+---
+
+<div class="intro">
+    <div class="container">
+        <div class="row justify-content-start">
+            <div class="col-12 col-md-7 col-lg-6 order-2 order-md-1">
+                {{ content }}
+            </div>
+            {% if page.intro_image %}
+            <div class="col-12 col-md-5 col-lg-6 order-1 order-md-2 position-relative">
+                <img alt={{ page.title }} class="intro-image{% if page.intro_image_absolute %} intro-image-absolute{% endif %}{% if page.intro_image_hide_on_mobile %} intro-image-hide-mobile{% endif %}" src="{{ page.intro_image | relative_url }}" />
+            </div>
+            {% endif %}
+        </div>
+    </div>
+</div>
+
+<div class="container pt-6 pb-6">
+    <div class="row">
+        {% assign promoted_portfolios = site.portfolio | where: "promoted", true | sort: "weight" %}
+        {% for portfolio in promoted_portfolios %}
+        <div class="col-12 col-md-6 mb-2">
+            <div class="portfolio portfolio-summary portfolio-summary-large">
+                {% if portfolio.image %}
+                <div class="portfolio-image">
+                    <img width="90" height="90" alt="{{ portfolio.title }}" class="img-fluid mb-2" src="{{ portfolio.image | relative_url }}" />
+                </div>
+                {% endif %}
+                <div class="portfolio-meta">
+                    <h2 class="portfolio-name"><a href="{{ portfolio.url | relative_url }}">{{ portfolio.title }}</a></h2>
+                    <p class="portfolio-description">{{ portfolio.jobtitle }}</p>
+                    {% if portfolio.linkedinurl %}
+                    <a target="_blank" href="{{ portfolio.linkedinurl }}" rel="noreferrer">LinkedIn</a>
+                    {% endif %}
+                </div>
+                <div class="portfolio-content">{{ portfolio.content | truncate: 120 }}</div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    <div class="row pt-6 pb-6">
+        {% assign portfolios = site.portfolio | where: "promoted", empty | sort: "weight" %}
+        {% for portfolio in portfolios %}
+        <div class="col-12 col-md-4 mb-3">
+            <div class="portfolio portfolio-summary">
+                {% if portfolio.image %}
+                <div class="portfolio-image">
+                    <img width="60" height="60" alt="{{ portfolio.title }}" class="img-fluid mb-2" src="{{ portfolio.image | relative_url }}" />
+                </div>
+                {% endif %}
+                <div class="portfolio-meta">
+                    <h2 class="portfolio-name"><a href="{{ portfolio.url | relative_url }}">{{ portfolio.title }}</a></h2>
+                    <p class="portfolio-description">{{ portfolio.jobtitle }}</p>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>

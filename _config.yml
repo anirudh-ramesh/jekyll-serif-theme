@@ -15,6 +15,8 @@ collections:
     output: true
   team:
     output: true
+  portfolio:
+    output: true
 
 defaults:
   - scope:
@@ -27,6 +29,11 @@ defaults:
       type: "team"
     values:
       layout: "team"
+  - scope:
+      path: ""
+      type: "portfolio"
+    values:
+      layout: "portfolio"
 
 sass:
   indentWidth: 4

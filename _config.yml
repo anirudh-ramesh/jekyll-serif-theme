@@ -17,6 +17,8 @@ collections:
     output: true
   portfolio:
     output: true
+  resource:
+    output: true
 
 defaults:
   - scope:
@@ -34,6 +36,11 @@ defaults:
       type: "portfolio"
     values:
       layout: "portfolio"
+  - scope:
+      path: ""
+      type: "resource"
+    values:
+      layout: "resource"
 
 sass:
   indentWidth: 4

@@ -12,6 +12,7 @@ logicFields:
   - service.weight
   - team.weight
   - portfolio.weight
+  - resource.weight
 models:
   config:
     type: config
@@ -111,6 +112,27 @@ models:
     type: page
     label: Portfolios
     file: portfolio.md
+    singleInstance: true
+    fields:
+      - type: string
+        name: title
+        label: Title
+      - type: string
+        name: layout
+        label: Layout
+      - type: string
+        name: permalink
+        label: Permalink
+      - type: boolean
+        name: intro_image_absolute
+        label: Intro Image Absolute
+      - type: boolean
+        name: intro_image_hide_on_mobile
+        label: Intro Image Hide On Mobile
+  resources:
+    type: page
+    label: Resources
+    file: resource.md
     singleInstance: true
     fields:
       - type: string
@@ -235,6 +257,39 @@ models:
         label: Layout
         hidden: true
         default: portfolio
+      - type: boolean
+        name: promoted
+        label: Promoted
+  resource:
+    type: page
+    label: Resource
+    folder: _resource
+    fields:
+      - type: string
+        name: title
+        label: Title
+      - type: datetime
+        name: date
+        label: Date
+      - type: boolean
+        name: draft
+        label: Draft
+      - type: image
+        name: image
+        label: Image
+      - type: string
+        name: jobtitle
+      - type: string
+        name: linkedinurl
+      - type: number
+        name: weight
+        label: Weight
+        subtype: int
+      - type: string
+        name: layout
+        label: Layout
+        hidden: true
+        default: resource
       - type: boolean
         name: promoted
         label: Promoted
